@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     EditText etWeight, etHeight;
     TextView tvResult;
 
-    double weight,height, bmi;
+    double weight, height, bmi;
     String result;
 
 
@@ -32,15 +32,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btnCalculate= findViewById(R.id.btnCalculate);
+        btnCalculate = findViewById(R.id.btnCalculate);
 
-        etHeight=findViewById(R.id.etHeight);
+        etHeight = findViewById(R.id.etHeight);
 
-        etWeight=findViewById(R.id.etWeight);
+        etWeight = findViewById(R.id.etWeight);
 
-        tvResult=findViewById(R.id.tvResult);
-
-
+        tvResult = findViewById(R.id.tvResult);
 
 
         btnCalculate.setOnClickListener(this);
@@ -49,22 +47,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
 
-        if(TextUtils.equals(etHeight.getText().toString(),"")){
+        if (TextUtils.equals(etHeight.getText().toString(), "")) {
             return;
         }
-        if(TextUtils.equals(etWeight.getText().toString(),"")){
+        if (TextUtils.equals(etWeight.getText().toString(), "")) {
             return;
         }
-        weight= Double.parseDouble(etWeight.getText().toString());
-        height= Double.parseDouble(etHeight.getText().toString());
+        weight = Double.parseDouble(etWeight.getText().toString());
+        height = Double.parseDouble(etHeight.getText().toString());
 
 
-
-        Calculation cal = new Calculation(weight,height);
+        Calculation cal = new Calculation(weight, height);
 
         bmi = cal.calculateBmi();
         cal.setBmi(bmi);
-        result=cal.bmiResult();
+        result = cal.bmiResult();
         tvResult.setText(String.valueOf(bmi));
 
 
@@ -72,10 +69,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         Timer timer = new Timer();
 
-        timer.schedule( new TimerTask(){
+        timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                Intent intent=new Intent();
+                Intent intent = new Intent();
                 intent = new Intent(MainActivity.this, ResultActivity.class);
                 intent.putExtra(Intent.EXTRA_TEXT, String.valueOf(result));
 
@@ -86,8 +83,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     }
-
-
 }
 
-////fgjjbjg jkbuhvh hbjh
+
+
